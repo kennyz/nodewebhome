@@ -5,7 +5,8 @@
 		<h2>组合</h2>
 		<div class="index-large-box"><image src="/images/lego_300.jpg"/></div>
 		<p>
-			<a class="btn btn-default" href="#" role="button">View details
+			<!-- Button trigger modal -->
+			<a class="btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#myModal-1">更多
 				&raquo;</a>
 		</p>
 	</div>
@@ -13,7 +14,7 @@
 		<h2>创造</h2>
 		<div class="index-large-box"><image src="/images/piplus_large.png" width="300"/></div>
 		<p>
-			<a class="btn btn-default" href="#" role="button">View details
+			<a class="btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#myModal-2">更多
 				&raquo;</a>
 		</p>
 	</div>
@@ -21,8 +22,59 @@
 		<h2>改变</h2>
 		<div class="index-large-box"><image src="/images/apple-large.jpg" width="300"/></div>
 		<p>
-			<a class="btn btn-default" href="#" role="button">View details
+			<a class="btn btn-default" href="#" role="button"  data-toggle="modal" data-target="#myModal-3">更多
 				&raquo;</a>
 		</p>
 	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">组合</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">创造</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">改变</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
