@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo nohup node app.js &
+sudo nohup node ./app.js  &

@@ -8,6 +8,14 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var remotedata = require('./routes/remotedata');
 
+var wechat = require('wechat');
+var config = {
+  token: 'kongwunettoken',
+  appid: 'wxf0cfc7b2fff37378',
+  encodingAESKey: 'JJWD7ZHAl28PoF7GvE9WqBzw6bJkbScRaSTOAcMmgvB'
+};
+var weixin = require('./routes/weixin');
+
 var http = require('http');
 var path = require('path');
 
@@ -31,8 +39,15 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.use('/wechat', wechat(config, function (req, res, next) {
+  // 微信输入信息都在req.weixin上
+  //   var message = req.weixin;
+  //   
+}));
+
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/weixin', weixin.list);
 app.get('/remotedata/getscore',remotedata.getscore);
 app.get('/remotedata',remotedata.list);
 
