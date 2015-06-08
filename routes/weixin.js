@@ -1,4 +1,6 @@
 
+var express = require('express');
+var router = express.Router();
 
 var wechat = require('wechat');
 var config = {
@@ -8,10 +10,28 @@ var config = {
 };
 
 
-exports.list = function(req, res){
-        res.reply({
-                         content: 'text object',
-                         type: 'text'
-                    });
-  	//res.send("respond with a weixin resource");
-};
+router.use(function (req, res, next) {
+  next();
+});
+
+router.all('/wechat', wechat(config, function (req, res, next) {
+
+  var message = req.weixin;
+  if (message.FromUserName === 'diaosi') {
+
+    res.reply('hehe');
+  }
+  else {
+    res.reply([
+      {
+        title: '测试标题',
+        description: '描述',
+        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
+        url: 'http://nodeapi.cloudfoundry.com/'
+      }
+    ]);
+  }
+
+}));
+
+module.exports = router;

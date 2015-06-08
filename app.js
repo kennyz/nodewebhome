@@ -10,10 +10,11 @@ var remotedata = require('./routes/remotedata');
 
 var wechat = require('wechat');
 var config = {
-  token: 'kongwunettoken',
-  appid: 'wxf0cfc7b2fff37378',
-  encodingAESKey: 'JJWD7ZHAl28PoF7GvE9WqBzw6bJkbScRaSTOAcMmgvB'
+  token: 'TOKEN',
+  appid: 'XXXX',
+  encodingAESKey: 'XXXXX'
 };
+var local_config = require('./local_config');
 var weixin = require('./routes/weixin');
 
 var http = require('http');
@@ -27,11 +28,10 @@ var app_title = "Kongwu";
 app.set('port', process.env.PORT || 80);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+//app.use(express.logger('dev'));
+//app.use(express.bodyParser());
+//app.use(express.methodOverride());
+//app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
@@ -39,15 +39,32 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.use('/wechat', wechat(config, function (req, res, next) {
-  // 微信输入信息都在req.weixin上
-  //   var message = req.weixin;
-  //   
+app.use(express.query());
+app.use('/wechat22', weixin);
+
+app.use('/wechat', wechat(local_config, function (req, res, next) {
+  var message = req.weixin;
+  if (message.FromUserName === 'diaosi') {
+
+    res.reply('hehe');
+  }
+  else {
+    res.reply([
+      {
+        title: '你来我家接我吧',
+        description: '这是女神与高富帅之间的对话',
+        picurl: 'http://nodeapi.cloudfoundry.com/qrcode.jpg',
+        url: 'http://nodeapi.cloudfoundry.com/'
+      }
+    ]);
+  }
+
 }));
+
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/weixin', weixin.list);
+//app.get('/weixin', weixin.list);
 app.get('/remotedata/getscore',remotedata.getscore);
 app.get('/remotedata',remotedata.list);
 
